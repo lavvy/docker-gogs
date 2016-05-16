@@ -15,7 +15,7 @@
 FROM golang:1.4
 MAINTAINER Ross Timson <ross@rosstimson.com>
 
-ENV GOGS_VERSION v0.6.1
+ENV GOGS_VERSION v1.0.0
 ENV GOGS_PATH $GOPATH/src/github.com/gogits/gogs
 ENV GOGS_CUSTOM_CONF_PATH $GOGS_PATH/custom/conf
 ENV GOGS_CUSTOM_CONF $GOGS_CUSTOM_CONF_PATH/app.ini
@@ -28,7 +28,7 @@ RUN apt-get update \
 
 RUN useradd -s /bin/bash -u 2000 -m -c gogs git
 RUN mkdir -p $GOPATH/src/github.com/gogits \
-    && git clone https://github.com/gogits/gogs.git $GOGS_PATH \
+    && git clone https://github.com/lavvy/gogs.git $GOGS_PATH \
     && cd $GOGS_PATH \
     && git checkout -b $GOGS_VERSION \
     && go get -tags 'redis' ./... \
